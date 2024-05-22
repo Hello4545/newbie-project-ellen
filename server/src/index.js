@@ -6,8 +6,8 @@ const mysql = require('mysql2');
 require('dotenv').config();
 
 const app = express();
-const port = 17305;
-// const port = process.env.PORT || 8000;
+const port = 8000;
+// const port = process.env.PORT;
 
 app.use(express.json());
 
@@ -30,15 +30,17 @@ module.exports = {
     },
 };
 
-const whitelist = ['http://localhost:3000'];
+const whitelist = ['http://localhost:3000', 'https://ellen.newbie.sparcsandbox.com'];
+// const whitelist = ['https://ellen.newbie.sparcsandbox.com'];
+// 만약 안되면 17074 대신 외부에 매핑된 포트를 사용?
 
 const corsOptions = {
     origin: (origin, callback) => {
         console.log('[REQUEST-CORS] Request from origin: ', origin);
-        if (!origin || whitelist.includes(origin)) {
+        if (!origin || whitelist.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
-            callback(new Error('Not allowed by CORS'));
+            callback(new Error('Not allowed by CORS'), false);
         }
     },
     credentials: true,
@@ -56,5 +58,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Server is running at https://api.ellen.newbie.sparcsandbox.com/`);
 });

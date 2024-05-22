@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,23 +8,27 @@ datasource db {
 }
 
 model User {
-  id       Int       @id @default(autoincrement())
-  name     String
-  email    String    @unique
-  password String
-  dept     String?
-  students Student[]
+  id         Int         @id @default(autoincrement())
+  name       String
+  email      String      @unique
+  password   String
+  dept       String?
   professors Professor[]
+  students   Student[]
 }
 
 model Student {
-  student_id Int   @id @default(autoincrement())
-  user       User  @relation(fields: [user_id], references: [id])
+  student_id Int  @id @default(autoincrement())
   user_id    Int
+  user       User @relation(fields: [user_id], references: [id])
+
+  @@index([user_id], map: "Student_user_id_fkey")
 }
 
 model Professor {
-  prof_id  Int   @id @default(autoincrement())
-  user     User  @relation(fields: [user_id], references: [id])
-  user_id  Int
+  prof_id Int  @id @default(autoincrement())
+  user_id Int
+  user    User @relation(fields: [user_id], references: [id])
+
+  @@index([user_id], map: "Professor_user_id_fkey")
 }

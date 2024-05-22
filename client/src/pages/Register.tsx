@@ -20,7 +20,9 @@ const RegisterPage = (props: {}) => {
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post("http://ssal.sparcs.org:17305/register", { email, password });
+      console.log('error');
+      const response = await axios.post("https://api.ellen.newbie.sparcsandbox.com/register", { email, password });
+      // const response = await axios.post("http://ssal.sparcs.org:17305/register", { email, password });
       console.log(response.data);
       navigate("/login"); // Navigate to login on success
     } catch (error) {
