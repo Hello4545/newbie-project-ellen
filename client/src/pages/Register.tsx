@@ -8,22 +8,21 @@ const RegisterPage = (props: {}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
+  
 
-  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
+  
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleRegister = async () => {
     try {
-      // Replace with your API endpoint
-      const response = await axios.post("/api/register", { email, password });
+      const response = await axios.post("http://localhost:8000/register", { email, password });
       console.log(response.data);
-      // Navigate to a different page on success
-      navigate("/Login");
+      navigate("/login"); // Navigate to login on success
     } catch (error) {
       console.error("There was an error registering!", error);
     }
@@ -31,28 +30,26 @@ const RegisterPage = (props: {}) => {
 
   return (
     <div>
-        <h1>Register</h1>
-        <form>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={handleEmailChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-            required
-          />
-        </div>
-        <button type="submit">Register</button>
-        </form>
+      <h1>Register</h1>
+      <div>
+        <label>Email:</label>
+        <input
+          type="email"
+          value={email}
+          onChange={handleEmailChange}
+          required
+        />
+      </div>
+      <div>
+        <label>Password:</label>
+        <input
+          type="password"
+          value={password}
+          onChange={handlePasswordChange}
+          required
+        />
+      </div>
+      <button onClick={handleRegister}>Register</button>
     </div>
   )
 };
