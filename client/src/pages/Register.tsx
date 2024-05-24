@@ -46,9 +46,9 @@ const RegisterPage = (props: {}) => {
     <div className="container">
       <form onSubmit={handleRegister} className="register-form">
         <div className="form-container">
-          <h1>Register</h1>
+          <h1>Sign Up</h1>
           <div className="input-group">
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="name">Name</label>
             <input
               id="name"
               type="name"
@@ -58,7 +58,7 @@ const RegisterPage = (props: {}) => {
             />
           </div>
           <div className="input-group">
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">Email</label>
             <input
               id="email"
               type="email"
@@ -68,7 +68,7 @@ const RegisterPage = (props: {}) => {
             />
           </div>
           <div className="input-group">
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">Password</label>
             <input
               id="password"
               type="password"
@@ -78,7 +78,7 @@ const RegisterPage = (props: {}) => {
             />
           </div>
           <div className="input-group">
-            <label htmlFor="department">Department:</label>
+            <label htmlFor="department">Department</label>
             <select
               id="department"
               value={department}
@@ -102,25 +102,27 @@ const RegisterPage = (props: {}) => {
             </select>
           </div>
           <div className="role-section">
-            <span>I am a...:</span>
-            <input
-              type="radio"
-              name="role"
-              id="professor"
-              value="Professor"
-              onChange={handleProfessorChange}
-              checked={isProfessor}
-            />
-            <label htmlFor="professor">Professor</label>
-            <input
-              type="radio"
-              name="role"
-              id="student"
-              value="Student"
-              onChange={() => setIsProfessor(false)}
-              checked={!isProfessor}
-            />
-            <label htmlFor="student">Student</label>
+            <div className="role-label">I am a...:</div>
+              <div className="role-options">
+                <input
+                  type="radio"
+                  name="role"
+                  id="professor"
+                  value="Professor"
+                  onChange={handleProfessorChange}
+                  checked={isProfessor}
+                />
+                <label htmlFor="professor">Professor</label>
+                <input
+                  type="radio"
+                  name="role"
+                  id="student"
+                  value="Student"
+                  onChange={() => setIsProfessor(false)}
+                  checked={!isProfessor}
+                />
+                <label htmlFor="student">Student</label>
+              </div>
           </div>
           <button type="submit" className="submit-button">Register</button>
         </div>
