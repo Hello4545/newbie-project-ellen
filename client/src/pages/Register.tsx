@@ -8,6 +8,8 @@ const RegisterPage = (props: {}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isProfessor, setIsProfessor] = useState(false);
+  const [name, setName] = useState("");
+  const [department, setDepartment] = useState("");
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -19,6 +21,14 @@ const RegisterPage = (props: {}) => {
 
   const handleProfessorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsProfessor(e.target.checked);
+  };
+  
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
+  const handleDepartmentChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setDepartment(e.target.value);
   };
 
   const handleRegister = async (e: FormEvent) => {
@@ -33,28 +43,64 @@ const RegisterPage = (props: {}) => {
   };
 
   return (
-    <form onSubmit={handleRegister}>
-      <div>
+    <form onSubmit={handleRegister} className="register-form">
+      <div className="form-container">
         <h1>Register</h1>
-        <div>
-          <label>Email:</label>
+        <div className="input-group">
+          <label htmlFor="name">Name:</label>
           <input
+            id="name"
+            type="name"
+            value={name}
+            onChange={handleNameChange}
+            required
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="email">Email:</label>
+          <input
+            id="email"
             type="email"
             value={email}
             onChange={handleEmailChange}
             required
           />
         </div>
-        <div>
-          <label>Password:</label>
+        <div className="input-group">
+          <label htmlFor="password">Password:</label>
           <input
+            id="password"
             type="password"
             value={password}
             onChange={handlePasswordChange}
             required
           />
         </div>
-        <section>
+        <div className="input-group">
+          <label htmlFor="department">Department:</label>
+          <select
+            id="department"
+            value={department}
+            onChange={handleDepartmentChange}
+            required
+          >
+            <option value="">Select a department</option>
+            <option value="Aerospace Engineering">Aerospace Engineering</option>
+            <option value="Bio and Brain Engineering">Bio and Brain Engineering</option>
+            <option value="Business and Technology Management">Biology</option>
+            <option value="Chemical and Biomolecular Engineering">Chemical and Biomolecular Engineering</option>
+            <option value="Civil and Environmental Engineering">Civil and Environmental Engineering</option>
+            <option value="Industrial & System Engineering">Industrial & System Engineering</option>
+            <option value="Industrial Design">Industrial Design</option>
+            <option value="Materials Science & Engineering">Materials Science & Engineering</option>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
+            <option value="Nuclear & Quantum Engineering">Nuclear & Quantum Engineering</option>
+            <option value="School of Computing">School of Computing</option>
+            <option value="School of Electrical Engineering">School of Electrical Engineering</option>
+          </select>
+        </div>
+        <div className="role-section">
           <span>I am a...:</span>
           <input
             type="radio"
@@ -74,11 +120,13 @@ const RegisterPage = (props: {}) => {
             checked={!isProfessor}
           />
           <label htmlFor="student">Student</label>
-        </section>
-        <button type="submit">Register</button>
+        </div>
+        <button type="submit" className="submit-button">Register</button>
       </div>
     </form>
+
   );
 };
 
 export default RegisterPage;
+
