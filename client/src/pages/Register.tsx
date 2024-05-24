@@ -34,8 +34,14 @@ const RegisterPage = (props: {}) => {
   const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://api.ellen.newbie.sparcsandbox.com/register", { email, password, isProfessor });
-      console.log(response.data);
+      const response = await axios.post("https://api.ellen.newbie.sparcsandbox.com/register", 
+      { email, 
+        password, 
+        isProfessor, 
+        name, 
+        dept: department, 
+      });
+      console.log("data"+response.data);
       navigate("/login"); // Navigate to login on success
     } catch (error: any) {
       if (error.response && error.response.data) {

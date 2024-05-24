@@ -7,23 +7,37 @@ const prisma = new PrismaClient();
 
 router.post('/', async(req, res) => {
   const { email, password, name, dept, isProfessor } = req.body;
-    
+
+  if (!email || !password || !name || (isProfessor && !dept)) {
+    return res.status(400).json({ message: 'All fields must be filled' });
+  }
+
     try {
         console.log('error here!!');
         
+        // if (isProfessor) {
+        //   const professor = await prisma.professor.findFirst({
+        //     where: {
+        //       user: {
+        //         email: email
+        //       }
+        //     }
+        //   });
+        //   // If not found in the Professor table
+        //   if (!professor) {
+        //     return res.status(403).json({ message: 'Professor가 아닙니다!' });
+        //   }
+        // }   
+
         if (isProfessor) {
-          const professor = await prisma.professor.findFirst({
-            where: {
-              user: {
-                email: email
-              }
-            }
-          });
-          // If not found in the Professor table
-          if (!professor) {
+          // Professor emails!
+          const allowedProfEmails = ['prof@prof',];
+        
+          if (!allowedProfEmails.includes(email)) {
             return res.status(403).json({ message: 'Professor가 아닙니다!' });
           }
-        }    
+        }
+         
 
         const existingUser = await prisma.user.findUnique({ where: { email } });
 
@@ -40,8 +54,8 @@ router.post('/', async(req, res) => {
             email,
             password,
             name,
-            dept,
-            isProfessor
+            dept: dept,
+            isProfessor: isProfessor,
           },
         });
         
