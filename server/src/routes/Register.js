@@ -6,29 +6,59 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 router.post('/', async(req, res) => {
-    const {email, password} = req.body;
+  const { email, password, name, dept, isProfessor } = req.body;
     
     try {
         console.log('error here!!');
-        // Check if user already exists
+        
+        if (isProfessor) {
+          const professor = await prisma.professor.findFirst({
+            where: {
+              user: {
+                email: email
+              }
+            }
+          });
+          // If not found in the Professor table
+          if (!professor) {
+            return res.status(403).json({ message: 'Professor가 아닙니다!' });
+          }
+        }    
+
         const existingUser = await prisma.user.findUnique({ where: { email } });
 
         if (existingUser) {
-          return res.status(409).json({ message: 'User already exists' });
+          return res.status(409).json({ message: 'User already exists!' });
         }
         // Hash the password
-        console.log('error here!!2');
-        const hashedPassword = await bcrypt.hash(password, 10);
+        // console.log('error here!!2');
+        // const hashedPassword = await bcrypt.hash(password, 10);
     
         // Create new user
         const user = await prisma.user.create({
           data: {
             email,
-            password: hashedPassword,
-            name: '',
+            password,
+            name,
+            dept,
+            isProfessor
           },
         });
         
+        if (isProfessor) {
+          await prisma.professor.create({
+            data: {
+              user_id: user.id,
+            },
+          });
+        } else {
+          // If the user is a student, add to the student table
+          await prisma.student.create({
+            data: {
+              user_id: user.id,
+            },
+          });
+        }
     
         res.status(201).json(user);
         console.log('error here!!3');

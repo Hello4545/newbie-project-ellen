@@ -37,7 +37,18 @@ const RegisterPage = (props: {}) => {
       const response = await axios.post("https://api.ellen.newbie.sparcsandbox.com/register", { email, password, isProfessor });
       console.log(response.data);
       navigate("/login"); // Navigate to login on success
-    } catch (error) {
+    } catch (error: any) {
+      if (error.response && error.response.data) {
+        if (error.response.status === 403) {
+          window.alert("Professor가 아닙니다!");
+        } else if (error.response.status === 409) {
+          window.alert("User already exists!");
+        } else {
+          window.alert(error.response.data.message);
+        }
+      } else {
+        window.alert("An error occurred during registration.");
+      }
       console.error("There was an error registering!", error);
     }
   };
@@ -102,7 +113,7 @@ const RegisterPage = (props: {}) => {
             </select>
           </div>
           <div className="role-section">
-            <div className="role-label">I am a...:</div>
+            <div className="role-label">I am a...</div>
               <div className="role-options">
                 <input
                   type="radio"

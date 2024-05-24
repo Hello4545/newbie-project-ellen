@@ -85,6 +85,7 @@ h1, div, label, input{
     flex: 0 0 auto;
     margin-right: 50px;
     margin-left: 10px;
+    font-weight: bold;
   }
   
   .role-options {
