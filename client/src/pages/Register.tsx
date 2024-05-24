@@ -11,6 +11,7 @@ const RegisterPage = (props: {}) => {
   const [name, setName] = useState("");
   const [department, setDepartment] = useState("");
 
+  
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
