@@ -24,7 +24,7 @@ const LoginPage = (props: {}) => {
         password,
       });
       console.log("data"+response.data);
-      navigate("/home");
+      navigate("/");
     } catch (error: any) {
       if (error.response && error.response.data) {
         if (error.response.status === 403) {
