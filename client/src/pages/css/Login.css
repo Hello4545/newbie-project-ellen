@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+h1, div, label, input{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .register-form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: aliceblue;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .input-group label {
+    display: block;
+    width: fit-content;
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .input-group input{
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    height: 30px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .input-group select {
+    width: 94%;
+    padding: 8px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    height: 45px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .role-section {
+    margin: 20px 0;
+    width: 100%;
+  }
+  
+  .role-section span {
+    font-weight: bold;
+  }
+  
+  .submit-button {
+    background-color: rgb(125, 190, 247);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 25px;
+  }
+  
+  .role-section {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    width: 100%;
+  }
+  
+  .role-label {
+    flex: 0 0 auto;
+    margin-right: 50px;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
+  .role-options {
+    flex: 0.8;
+    display: flex;
+    align-items: center;
+  }
+  
+  .role-options input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  .role-options label {
+    margin-right: 50px;
+  }

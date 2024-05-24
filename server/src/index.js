@@ -48,10 +48,12 @@ const corsOptions = {
 
 const homeRouter = require('./routes/Home.js');
 const registerRouter = require('./routes/Register.js');
+const loginRouter = require('./routes/Login.js');
 
 app.use(cors(corsOptions));
 app.use('/home', homeRouter);
 app.use('/register', registerRouter);
+app.use('/login', loginRouter);
 
 app.get('/', (req, res) => {
     res.send('Server connected!');
