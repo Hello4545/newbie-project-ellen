@@ -59,6 +59,10 @@ const RegisterPage = (props: {}) => {
     }
   };
 
+  const handleNavigateToLogin = () => {
+    navigate("/login");
+  };
+
   return (
     <div className="container">
       <form onSubmit={handleRegister} className="register-form">
@@ -142,6 +146,7 @@ const RegisterPage = (props: {}) => {
               </div>
           </div>
           <button type="submit" className="submit-button">Register</button>
+          <button type="button" onClick={handleNavigateToLogin} className="login-button">Login</button>
         </div>
       </form>
     </div>

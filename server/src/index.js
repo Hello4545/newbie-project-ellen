@@ -90,6 +90,17 @@ app.get('/check-login', (req, res) => {
     // }
 });
 
+app.post('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.error("Failed to destroy the session during logout.", err);
+            return res.status(500).send('Could not log out.');
+        }
+        res.clearCookie('connect.sid', { path: '/' }); // 'connect.sid' default name
+        res.send('Logged out!');
+    });
+});
+
 app.get('/', (req, res) => {
     res.send('Server connected!');
 });

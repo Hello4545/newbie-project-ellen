@@ -7,11 +7,24 @@ axios.defaults.withCredentials = true;
 
 const HomePage = (props: {}) => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [isProfessor, setIsProfessor] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const checkLogin = async () => {
     try {
       const {data} = await axios.get<{id: number; email: string; isProfessor: boolean; name: string}>("https://api.ellen.newbie.sparcsandbox.com/check-login", {withCredentials: true});
       console.log(data);
+      if (data.id) {
+        setName(data.name);
+        setEmail(data.email);
+        setIsProfessor(data.isProfessor);
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
       // console.log("Response : "+data.id);
       // setIsLoggedIn(response.data.isProfessor);
     } catch (error) {
@@ -43,12 +56,23 @@ const HomePage = (props: {}) => {
     checkLogin();
   }, []);
 
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post("https://api.ellen.newbie.sparcsandbox.com/logout", {withCredentials: true});
+      alert('Successfully logged out!');
+    } catch (error) {
+      console.error('Failed to logout:', error);
+    }
+    navigate("/");
+  }
+
   return (
     <div>
       <nav className="top-nav">
-        <h1>Hello {isLoggedIn ? 'Hello' : ''}</h1>
+        <h1>{isLoggedIn ? `Hello ${name}!` : ''}</h1>
         <button onClick={() => navigate("/Login")}>Login</button>
         <button onClick={() => navigate("/Register")}>Sign Up</button>
+        <button onClick={handleLogout}>Logout</button>
       </nav>
       <div className="home">
         <div className="home-banner">
