@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+h1, div, label, input{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.labs-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.lab-card {
+    padding: 20px;
+    border: 1px solid #ececec;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;
+    background-color: #fff;
+}
+
+.lab-card:hover {
+    transform: scale(1.04);
+}
+
+.lab-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+    margin-top: 5px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.lab-field {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 4px;
+    text-align: left;
+    margin-left: 10px;
+}

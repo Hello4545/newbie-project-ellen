@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "./LabsGrid.css";
 
 const LabsGrid = () => {
     const [labs, setLabs] = useState([]);
@@ -19,13 +20,14 @@ const LabsGrid = () => {
     }, []);
 
     return (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
+        <div className="labs-grid-container">
             {labs.map(lab => (
-                <div key={lab.lab_id} style={{ padding: '20px', border: '1px solid #ccc' }}>
-                    <h2>{lab.lab_name}</h2>
-                    <p>{lab.field}</p> 
-                    <p>{lab.location}</p>
-                    <p>{lab.website}</p>
+                <div key={lab.id} className="lab-card">
+                    <h2 className="lab-title">{lab.lab_name}</h2>
+                    <div className="lab-field">{lab.field}</div>
+                    {/* <div className="lab-detail">Location: {lab.location}</div> */}
+                    {/* <div className="lab-detail">Website: {lab.website}</div> */}
+                    {/* <div className="lab-detail">Professor: {lab.professor.name}</div> */}
                 </div>
             ))}
         </div>

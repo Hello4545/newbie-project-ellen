@@ -88,7 +88,6 @@ const HomePage = (props: {}) => {
           {/* Banner content goes here */}
         </div>
         <div className="App">
-            {/* <h1>Welcome to Our Laboratory</h1> */}
             <LabsGrid />
         </div>
       </div>
