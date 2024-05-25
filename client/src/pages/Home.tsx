@@ -60,22 +60,31 @@ const HomePage = (props: {}) => {
     try {
       const response = await axios.post("https://api.ellen.newbie.sparcsandbox.com/logout", {withCredentials: true});
       alert('Successfully logged out!');
+      navigate("/");
+    window.location.reload();
     } catch (error) {
       console.error('Failed to logout:', error);
     }
-    navigate("/");
   }
 
   return (
     <div>
       <nav className="top-nav">
-        <h1>{isLoggedIn ? `Hello ${name}!` : ''}</h1>
-        <button onClick={() => navigate("/Login")}>Login</button>
-        <button onClick={() => navigate("/Register")}>Sign Up</button>
-        <button onClick={handleLogout}>Logout</button>
+        <div className="nav-title"><h1>Labs</h1></div>
+        <div className="nav-message">{isLoggedIn ? `Hello, ${name}!` : 'Please log in.'}</div>
+        <div className="nav-buttons">
+          {!isLoggedIn && (
+            <>
+              <button onClick={() => navigate("/login")}>Login</button>
+              <button onClick={() => navigate("/register")}>Sign Up</button>
+            </>
+          )}
+          {isLoggedIn && <button onClick={handleLogout}>Logout</button>}
+        </div>
       </nav>
       <div className="home">
         <div className="home-banner">
+          {/* Banner content goes here */}
         </div>
       </div>
     </div>
