@@ -1,27 +1,4 @@
-import React from "react";
-import "./css/Home.css";
-import Nav from "./Nav";
-import LabsGrid from '../components/LabsGrid.js';
-
-const HomePage = () => {
-  return (
-    <>
-      <Nav />
-      <div className="home">
-          <div className="home-banner">
-          </div>
-          <div className="App">
-              <LabsGrid />
-          </div>
-        </div>
-    </>
-    
-  );
-};
-
-export default HomePage;
-
-/*import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate }  from "react-router-dom";
 import "./css/Home.css";
@@ -29,7 +6,7 @@ import LabsGrid from '../components/LabsGrid.js';
 
 axios.defaults.withCredentials = true;
 
-const HomePage = (props: {}) => {
+const Nav = (props: {}) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -106,16 +83,8 @@ const HomePage = (props: {}) => {
           {isLoggedIn && <button onClick={handleLogout}>Logout</button>}
         </div>
       </nav>
-      <div className="home">
-        <div className="home-banner">
-        </div>
-        <div className="App">
-            <LabsGrid />
-        </div>
-      </div>
     </div>
   )
 };
 
-export default HomePage;
-*/
+export default Nav;

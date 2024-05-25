@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useLocation }  from "react-router-dom";
 import "./css/LabView.css";
+import Nav from "./Nav";
 // import "./css/Home.css";
 
 axios.defaults.withCredentials = true;
@@ -81,19 +82,7 @@ const LabViewPage = (props: {}) => {
 
     return (
         <div>
-            <nav className="top-nav">
-                <div className="nav-title"><h1>Labs</h1></div>
-                <div className="nav-message">{isLoggedIn ? `Hello, ${name}!` : 'Please log in.'}</div>
-                <div className="nav-buttons">
-                {!isLoggedIn && (
-                    <>
-                    <button onClick={() => navigate("/login")}>Login</button>
-                    <button onClick={() => navigate("/register")}>Sign Up</button>
-                    </>
-                )}
-                {isLoggedIn && <button onClick={handleLogout}>Logout</button>}
-                </div>
-            </nav>
+            <Nav />
             <div className="lab-view-container">
                 <h1 className="lab-view-title">Lab Details</h1>
                 <div className="lab-view-content">
