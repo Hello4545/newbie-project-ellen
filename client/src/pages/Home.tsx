@@ -8,22 +8,38 @@ const HomePage = (props: {}) => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const checkLoginStatus = async () => {
-      try {
-        const response = await axios.get("/api/check-login");
-        if (response.status === 200 && response.data.isLoggedIn) {
-          setIsLoggedIn(true);
-        } else {
-          setIsLoggedIn(false);
-        }
-      } catch (error) {
-        console.error("Failed to check login status:", error);
-        setIsLoggedIn(false);
-      }
-    };
+  const checkLogin = async () => {
+    try {
+      const response = await axios.get("https://api.ellen.newbie.sparcsandbox.com/check-login", {withCredentials: true});
+      console.log(response);
+      setIsLoggedIn(true);
+    } catch (error) {
+      console.error('Failed to fetch username:', error);
+    }
+  };
 
-    checkLoginStatus();
+  // useEffect(() => {
+  //   console.log("Current login status:", isLoggedIn);
+  //   const checkLoginStatus = async () => {
+  //     try {
+  //       const response = await axios.get("https://api.ellen.newbie.sparcsandbox.com/check-login", {withCredentials: true});
+  //       if (response.status === 200 && response.data.isLoggedIn) {
+  //         setIsLoggedIn(true);
+  //         console.log('logged in now');
+  //       } else {
+  //         setIsLoggedIn(false);
+  //         console.log('not logged in');
+  //       }
+  //     } catch (error) {
+  //       console.error("Failed to check login status:", error);
+  //       setIsLoggedIn(false);
+  //     }
+  //   };
+  //   checkLoginStatus();
+  // }, [isLoggedIn]);
+
+  useEffect(() => {
+    checkLogin();
   }, []);
 
   return (

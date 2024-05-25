@@ -25,11 +25,26 @@ router.post('/', async(req, res) => {
       return res.status(401).json({ message: 'Invalid password.' });
     }
 
-    res.status(200).json({ message: 'Login successful.', user });
+    req.session.user = {
+      id: user.id,
+      email: user.email,
+      isProfessor: user.isProfessor
+    };
+
+    res.status(200).json({ message: 'Login successful.', user: req.session.user });
   } catch (error) {
     console.error("Error logging in:", error);
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+// router.get('/check-login', (req, res) => {
+//   console.log(req.session)
+//   if (req.session && req.session.user) {
+//       res.status(200).json({ isLoggedIn: true, user: req.session.user });
+//   } else {
+//       res.status(200).json({ isLoggedIn: false });
+//   }
+// });
 
 module.exports = router;
