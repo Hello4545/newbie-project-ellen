@@ -13,6 +13,7 @@ const LabViewPage = (props: {}) => {
     const [labLocation, setLabLocation] = useState("");
     const [website, setWebsite] = useState("");
     const [field, setField] = useState("");
+    const [description, setDescrp] = useState("");
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -58,6 +59,7 @@ const LabViewPage = (props: {}) => {
                 setLabLocation(data.lab.location);
                 setWebsite(data.lab.website);
                 setField(data.lab.field);
+                setDescrp(data.lab.description)
             }
             } catch (error) {
             console.error('Failed to get lab info:', error);
@@ -84,12 +86,22 @@ const LabViewPage = (props: {}) => {
         <div>
             <Nav />
             <div className="lab-view-container">
-                <h1 className="lab-view-title">Lab Details</h1>
+                <h1 className="lab-view-title">LAB DETAILS</h1>
                 <div className="lab-view-content">
-                    <div><label className="lab-view-label">Name:</label> {labname}</div>
-                    <div><label className="lab-view-label">Location:</label> {labLocation}</div>
-                    <div><label className="lab-view-label">Website:</label> <a className="lab-view-link" href={website} target="_blank" rel="noopener noreferrer">{website}</a></div>
-                    <div><label className="lab-view-label">Field of Study:</label> {field}</div>
+                    <div className="lab-view-column-labels">
+                        <div className="lab-view-label">Name:</div>
+                        <div className="lab-view-label">Location:</div>
+                        <div className="lab-view-label">Website:</div>
+                        <div className="lab-view-label">Field of Study:</div>
+                        <div className="lab-view-label">Description:</div>
+                    </div>
+                    <div className="lab-view-column-values">
+                        <div className="lab-view-name">{labname}</div>
+                        <div className="lab-view-location">{labLocation}</div>
+                        <div className="lab-view-website"> <a className="lab-view-link" href={website} target="_blank" rel="noopener noreferrer">{website}</a></div>
+                        <div className="lab-view-field">{field}</div>
+                        <div className="lab-view-description">{description}</div>
+                    </div>
                 </div>
             </div>
         </div>

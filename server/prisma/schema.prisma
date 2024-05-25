@@ -36,13 +36,14 @@ model Professor {
 }
 
 model Labs {
-  lab_id    Int        @id @default(autoincrement())
-  lab_name  String?
-  location  String?
-  website   String?
-  field     String?
-  prof_id   Int?
-  Professor Professor? @relation(fields: [prof_id], references: [prof_id], onDelete: NoAction, onUpdate: NoAction, map: "Labs_ibfk_1")
+  lab_id      Int        @id @default(autoincrement())
+  lab_name    String?
+  location    String?
+  website     String?
+  field       String?
+  prof_id     Int?
+  description String?    @db.Text
+  Professor   Professor? @relation(fields: [prof_id], references: [prof_id], onDelete: NoAction, onUpdate: NoAction, map: "Labs_ibfk_1")
 
   @@index([prof_id], map: "prof_id")
 }
