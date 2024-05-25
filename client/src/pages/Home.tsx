@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate }  from "react-router-dom";
 import "./css/Home.css";
+import LabsGrid from '../components/LabsGrid.js';
 
 axios.defaults.withCredentials = true;
 
@@ -85,6 +86,10 @@ const HomePage = (props: {}) => {
       <div className="home">
         <div className="home-banner">
           {/* Banner content goes here */}
+        </div>
+        <div className="App">
+            {/* <h1>Welcome to Our Laboratory</h1> */}
+            <LabsGrid />
         </div>
       </div>
     </div>

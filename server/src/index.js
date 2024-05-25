@@ -50,6 +50,7 @@ const corsOptions = {
 const homeRouter = require('./routes/Home.js');
 const registerRouter = require('./routes/Register.js');
 const loginRouter = require('./routes/Login.js');
+const labsRouter = require('./routes/Labs.js');
 
 app.use(cors(corsOptions));
 
@@ -67,6 +68,7 @@ app.use(session({
 app.use('/home', homeRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
+app.use('/labs', labsRouter);
 app.get('/check-login', (req, res) => {
     try {
         const user = req.session.user;
