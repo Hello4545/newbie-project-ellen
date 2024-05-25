@@ -11,6 +11,7 @@ const Nav = (props: {}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [userID, setUserID] = useState(0);
   const [dept, setDept] = useState("");
   const [isProfessor, setIsProfessor] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,6 +23,7 @@ const Nav = (props: {}) => {
       if (data.id) {
         setName(data.name);
         setEmail(data.email);
+        setUserID(data.id);
         setIsProfessor(data.isProfessor);
         // setDept(data.dept);
         setIsLoggedIn(true);
@@ -70,13 +72,20 @@ const Nav = (props: {}) => {
     }
   }
 
+  const handleApplyList = (user_id: number) => {
+    console.log("userID"+user_id);
+    navigate("/ApplyList", { state: { user_id :`${user_id}` }});
+};
+
   return (
     <div>
       <nav className="top-nav">
-        <div className="nav-title"><h1>Labs</h1></div>
+        <div className="nav-title"><h1 onClick={() => navigate("/")}>Labs</h1></div>
         <div className="nav-message">{isLoggedIn ? `Hello, ${name}!` : 'Please log in.'}</div>
         <div className="nav-buttons">
-            {isLoggedIn && isProfessor && <div className="nav-clickable-text" onClick={handleLogout}>View Applications</div>}
+            {isLoggedIn && isProfessor && <div className="nav-clickable-text" onClick={() => {
+                        handleApplyList(userID)
+                    }}>View Applications</div>}
             {!isLoggedIn && (
                 <>
                 <button onClick={() => navigate("/login")}>Login</button>

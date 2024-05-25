@@ -106,9 +106,9 @@ const LabViewPage = (props: {}) => {
                         <div className="lab-view-location">{labLocation}</div>
                         <div className="lab-view-website"> <a className="lab-view-link" href={website} target="_blank" rel="noopener noreferrer">{website}</a></div>
                         <div className="lab-view-field">{field}</div>
-                        <div className="lab-view-description">{description}</div>
                     </div>
                 </div>
+                <div className="lab-view-description">{description}</div>
                 <div className="nav-buttons">
                 {isLoggedIn && !isProfessor && (
                     <button className="apply-button" onClick={() => {

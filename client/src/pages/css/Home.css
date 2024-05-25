@@ -19,6 +19,7 @@ h1, div, nav, label, input{
 
 .top-nav .nav-title {
   flex: 0 0 80px;
+  font-size: clamp(14px, 3vw, 18px);
 }
 
 .top-nav .nav-message,
@@ -27,11 +28,12 @@ h1, div, nav, label, input{
   display: flex;
   align-items: center;
   margin-left: 20px;
-  justify-content: flex-start; /* Aligns content to the left */
+  justify-content: flex-start;
+  font-size: clamp(10px, 3vw, 14px);
 }
 
 .top-nav .nav-buttons {
-  justify-content: flex-end; /* Aligns buttons to the right */
+  justify-content: flex-end;
 }
 
 .top-nav button {
@@ -49,7 +51,7 @@ h1, div, nav, label, input{
 }
 
 .nav-clickable-text {
-  margin-right: 40px;
+  margin-right: 20px;
   font-weight: bold;
   color: rgb(0, 89, 166);
 }
