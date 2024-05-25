@@ -25,6 +25,7 @@ const LabViewPage = (props: {}) => {
     const labInfo = { ...location.state };
     console.log(labInfo.labId)
     const lab_id = parseInt(labInfo.labId, 10);
+    console.log(lab_id);
     if(!location.state){
         console.log("error");
     }
@@ -82,6 +83,11 @@ const LabViewPage = (props: {}) => {
         checkLogin();
     }, []);
 
+    const handleApply = (lab_id: number) => {
+        // console.log(lab);
+        navigate("/Apply", { state: { lab_id :`${lab_id}` }});
+    };
+
     return (
         <div>
             <Nav />
@@ -102,6 +108,13 @@ const LabViewPage = (props: {}) => {
                         <div className="lab-view-field">{field}</div>
                         <div className="lab-view-description">{description}</div>
                     </div>
+                </div>
+                <div className="nav-buttons">
+                {isLoggedIn && (
+                    <button className="apply-button" onClick={() => {
+                        handleApply(lab_id)
+                    }}>Apply</button>
+                )}
                 </div>
             </div>
         </div>

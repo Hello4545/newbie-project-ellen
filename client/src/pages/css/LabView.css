@@ -17,6 +17,20 @@
     text-align: left;
 }
 
+.apply-button{
+    background-color: rgb(226, 242, 255);
+    color: rgb(63, 158, 240);
+    border: none;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 25px;
+    text-align: center;
+}
+
 .lab-view-title {
     color: #5f5e5e;
     font-size: 25px;
