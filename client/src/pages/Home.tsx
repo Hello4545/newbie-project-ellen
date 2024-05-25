@@ -3,16 +3,17 @@ import axios from "axios";
 import { useNavigate }  from "react-router-dom";
 import "./css/Home.css";
 
+axios.defaults.withCredentials = true;
 
 const HomePage = (props: {}) => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   const checkLogin = async () => {
     try {
-      const response = await axios.get("https://api.ellen.newbie.sparcsandbox.com/check-login", {withCredentials: true});
-      console.log(response);
-      setIsLoggedIn(true);
+      const {data} = await axios.get<{id: number; email: string; isProfessor: boolean; name: string}>("https://api.ellen.newbie.sparcsandbox.com/check-login", {withCredentials: true});
+      console.log(data);
+      // console.log("Response : "+data.id);
+      // setIsLoggedIn(response.data.isProfessor);
     } catch (error) {
       console.error('Failed to fetch username:', error);
     }

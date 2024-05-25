@@ -10,7 +10,6 @@ const app = express();
 const port = 8000;
 // const port = process.env.PORT;
 
-
 app.use(express.json());
 
 const db = mysql.createConnection({
@@ -55,13 +54,13 @@ const loginRouter = require('./routes/Login.js');
 app.use(cors(corsOptions));
 
 app.use(session({
-    secret: 'your_secret_key', // 세션 암호화 키
-    resave: false,             // 세션을 항상 저장할 지 여부
-    saveUninitialized: false,  // 초기화되지 않은 세션을 저장할지 여부
+    secret: 'your_secret_key',
+    resave: false,
+    saveUninitialized: false,
     cookie: {
-        httpOnly: true,        // 클라이언트 JavaScript가 쿠키에 접근하지 못하도록 함
-        secure: false,         // https만을 위한 쿠키인지 설정
-        maxAge: 3600000 * 24 * 7 // 쿠키의 생존 시간(밀리초)
+        httpOnly: true,
+        secure: false,
+        maxAge: 3600000 * 24 * 7
     }
 }));
 
@@ -69,11 +68,26 @@ app.use('/home', homeRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.get('/check-login', (req, res) => {
-    if (req.session.user) {
-        res.status(200).json({ isLoggedIn: true, user: req.session.user });
-    } else {
-        res.status(200).json({ isLoggedIn: false });
+    try {
+        const user = req.session.user;
+        console.log(user)
+        if (!user) {
+            return res.status(401).json({ error: 'User not found' });
+        }
+        res.json(user);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Internal server error' });
     }
+    // console.log('Current session data:', req.session);
+    // if (req.session.user) {
+    //     res.status(200).json({ 
+    //         isLoggedIn: true,
+    //         user: req.session.user,
+    //         isProfessor: req.session.user.isProfessor });
+    // } else {
+    //     res.status(200).json({ isLoggedIn: false });
+    // }
 });
 
 app.get('/', (req, res) => {

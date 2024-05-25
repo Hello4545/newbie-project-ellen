@@ -28,10 +28,19 @@ router.post('/', async(req, res) => {
     req.session.user = {
       id: user.id,
       email: user.email,
-      isProfessor: user.isProfessor
+      isProfessor: user.isProfessor, 
+      name: user.name
     };
+    console.log('session', req.session.user);
 
-    res.status(200).json({ message: 'Login successful.', user: req.session.user });
+    req.session.save((err) => {
+      if (err) {
+          return res.status(500).json({ error: 'Session failed' });
+      }
+      // res.sendStatus(user.id);
+      return res.status(200).json({ message: 'Login successful', user: req.session.user });
+  });
+    // res.status(200).json({ message: 'Login successful.', user: user });
   } catch (error) {
     console.error("Error logging in:", error);
     res.status(500).json({ message: 'Internal server error' });
