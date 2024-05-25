@@ -76,13 +76,14 @@ const Nav = (props: {}) => {
         <div className="nav-title"><h1>Labs</h1></div>
         <div className="nav-message">{isLoggedIn ? `Hello, ${name}!` : 'Please log in.'}</div>
         <div className="nav-buttons">
-          {!isLoggedIn && (
-            <>
-              <button onClick={() => navigate("/login")}>Login</button>
-              <button onClick={() => navigate("/register")}>Sign Up</button>
-            </>
-          )}
-          {isLoggedIn && <button onClick={handleLogout}>Logout</button>}
+            {isLoggedIn && isProfessor && <div className="nav-clickable-text" onClick={handleLogout}>View Applications</div>}
+            {!isLoggedIn && (
+                <>
+                <button onClick={() => navigate("/login")}>Login</button>
+                <button onClick={() => navigate("/register")}>Sign Up</button>
+                </>
+            )}
+            {isLoggedIn && <button onClick={handleLogout}>Logout</button>}
         </div>
       </nav>
     </div>

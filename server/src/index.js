@@ -52,6 +52,7 @@ const registerRouter = require('./routes/Register.js');
 const loginRouter = require('./routes/Login.js');
 const labsRouter = require('./routes/Labs.js');
 const labViewRouter = require('./routes/LabView.js');
+const applyRouter = require('./routes/Apply.js');
 
 app.use(cors(corsOptions));
 
@@ -71,6 +72,7 @@ app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use('/labs', labsRouter);
 app.use('/labview', labViewRouter);
+app.use('/apply', applyRouter);
 app.get('/check-login', (req, res) => {
     try {
         const user = req.session.user;

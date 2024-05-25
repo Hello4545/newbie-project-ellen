@@ -47,3 +47,13 @@ h1, div, nav, label, input{
 .top-nav button:hover {
   background-color: rgb(40, 151, 249);
 }
+
+.nav-clickable-text {
+  margin-right: 40px;
+  font-weight: bold;
+  color: rgb(0, 89, 166);
+}
+
+.nav-clickable-text:hover {
+  text-decoration: underline;
+}
