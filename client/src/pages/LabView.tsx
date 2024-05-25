@@ -110,7 +110,7 @@ const LabViewPage = (props: {}) => {
                     </div>
                 </div>
                 <div className="nav-buttons">
-                {isLoggedIn && (
+                {isLoggedIn && !isProfessor && (
                     <button className="apply-button" onClick={() => {
                         handleApply(lab_id)
                     }}>Apply</button>

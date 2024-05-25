@@ -11,17 +11,19 @@ const Nav = (props: {}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [dept, setDept] = useState("");
   const [isProfessor, setIsProfessor] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const checkLogin = async () => {
     try {
-      const {data} = await axios.get<{id: number; email: string; isProfessor: boolean; name: string}>("https://api.ellen.newbie.sparcsandbox.com/check-login", {withCredentials: true});
+      const {data} = await axios.get<{id: number; email: string; isProfessor: boolean; name: string, dept: String}>("https://api.ellen.newbie.sparcsandbox.com/check-login", {withCredentials: true});
       console.log(data);
       if (data.id) {
         setName(data.name);
         setEmail(data.email);
         setIsProfessor(data.isProfessor);
+        // setDept(data.dept);
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);

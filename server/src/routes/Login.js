@@ -29,7 +29,8 @@ router.post('/', async(req, res) => {
       id: user.id,
       email: user.email,
       isProfessor: user.isProfessor, 
-      name: user.name
+      name: user.name,
+      dept: user.dept
     };
     console.log('session', req.session.user);
 
