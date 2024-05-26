@@ -9,16 +9,17 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const app = express();
-const port = 8000;
+const port = process.env.SERVERPORT;
+// const port = 8000;
 // const port = process.env.PORT;
 
 app.use(express.json());
 
 const db = mysql.createConnection({
-    host: 'db',
-    user: 'root',
-    password: 'tnfqkrtm',
-    database: 'db'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PW,
+    database: process.env.DB_DB
 });
 
 module.exports = {
@@ -61,7 +62,7 @@ const myApplyListRouter = require('./routes/MyApplyList.js');
 app.use(cors(corsOptions));
 
 app.use(session({
-    secret: 'your_secret_key',
+    secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
     cookie: {
