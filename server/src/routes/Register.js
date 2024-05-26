@@ -30,7 +30,6 @@ router.post('/', async(req, res) => {
         // }   
 
         if (isProfessor) {
-          // Professor emails!
           const allowedProfEmails = ['prof@gmail.com',];
         
           if (!allowedProfEmails.includes(email)) {
@@ -66,7 +65,6 @@ router.post('/', async(req, res) => {
             },
           });
         } else {
-          // If the user is a student, add to the student table
           await prisma.student.create({
             data: {
               user_id: user.id,

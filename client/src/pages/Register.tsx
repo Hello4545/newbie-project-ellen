@@ -42,7 +42,7 @@ const RegisterPage = (props: {}) => {
         dept: department, 
       });
       console.log("data"+response.data);
-      navigate("/login"); // Navigate to login on success
+      navigate("/login");
     } catch (error: any) {
       if (error.response && error.response.data) {
         if (error.response.status === 403) {

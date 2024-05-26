@@ -46,7 +46,7 @@
 .lab-view-column-labels, .lab-view-column-values {
     display: flex;
     flex-direction: column;
-    width: 50%; /* Set explicit widths */
+    width: 50%;
 }
 
 .lab-view-label {
