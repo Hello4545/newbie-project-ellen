@@ -78,12 +78,12 @@ app.use('/labview', labViewRouter);
 app.use('/apply', applyRouter);
 app.use('/applylist', applyListRouter);
 app.post('/get-prof-id', async (req, res) => {
-    const { user_id } = req.body;
-
+    const { userID } = req.body;
+    console.log("get-prof-id", userID);
     try {
         const professor = await prisma.professor.findFirst({
             where: {
-                user_id: user_id,
+                user_id: userID,
             },
             include: {
                 user: true,

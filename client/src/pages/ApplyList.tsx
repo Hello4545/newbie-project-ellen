@@ -78,7 +78,7 @@ const ApplyListPage = () => {
             console.log("fetch"+profID);
             console.log(typeof(profID));
             const { data } = await axios.post(`https://api.ellen.newbie.sparcsandbox.com/applylist`, { profID });
-            console.log(typeof(profID));
+            console.log("type of profid:"+typeof(profID));
             setApps(data);
             console.log("application forms!");
         } catch (error) {

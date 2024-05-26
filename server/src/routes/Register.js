@@ -31,7 +31,7 @@ router.post('/', async(req, res) => {
 
         if (isProfessor) {
           // Professor emails!
-          const allowedProfEmails = ['prof@prof',];
+          const allowedProfEmails = ['prof@gmail.com',];
         
           if (!allowedProfEmails.includes(email)) {
             return res.status(403).json({ message: 'Professor가 아닙니다!' });
