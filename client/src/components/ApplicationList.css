@@ -1,0 +1,39 @@
+.application-list {
+    display: grid;
+    gap: 20px;
+    /* padding: 20px; */
+}
+
+.application-view-container {
+    display: grid;
+    gap: 10px;
+    border: 1px solid #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.application-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 10px;
+}
+
+.application-view-label {
+    font-weight: bold;
+    padding: 5px;
+    margin-right: 20px;
+    background-color: #ffffff;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.application-view-value {
+    padding: 5px;
+    background-color: #ffffff;
+    text-align: left;
+    word-wrap: break-word;
+    word-break: break-word;
+}

@@ -62,9 +62,9 @@ model Apply {
   user_id    Int?
   Student    Student? @relation(fields: [student_id], references: [student_id], onDelete: NoAction, onUpdate: NoAction, map: "Apply_ibfk_1")
   Labs       Labs?    @relation(fields: [lab_id], references: [lab_id], onDelete: NoAction, onUpdate: NoAction, map: "Apply_ibfk_2")
-  User       User?    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_user")
+  User       User?    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Apply_ibfk_3")
 
   @@index([lab_id], map: "lab_id")
   @@index([student_id], map: "student_id")
-  @@index([user_id], map: "fk_user")
+  @@index([user_id], map: "id")
 }

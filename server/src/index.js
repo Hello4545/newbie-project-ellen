@@ -5,6 +5,8 @@ const cors = require('cors');
 const session = require('express-session');
 const mysql = require('mysql2');
 require('dotenv').config();
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
 const app = express();
 const port = 8000;
@@ -53,6 +55,7 @@ const loginRouter = require('./routes/Login.js');
 const labsRouter = require('./routes/Labs.js');
 const labViewRouter = require('./routes/LabView.js');
 const applyRouter = require('./routes/Apply.js');
+const applyListRouter = require('./routes/ApplyList.js');
 
 app.use(cors(corsOptions));
 
@@ -73,6 +76,31 @@ app.use('/login', loginRouter);
 app.use('/labs', labsRouter);
 app.use('/labview', labViewRouter);
 app.use('/apply', applyRouter);
+app.use('/applylist', applyListRouter);
+app.post('/get-prof-id', async (req, res) => {
+    const { user_id } = req.body;
+
+    try {
+        const professor = await prisma.professor.findFirst({
+            where: {
+                user_id: user_id,
+            },
+            include: {
+                user: true,
+            },
+        });
+
+        if (professor) {
+            console.log("profID" + professor.prof_id)
+            res.json({ prof_id: professor.prof_id });
+        } else {
+            res.status(404).json({ error: 'Professor not found' });
+        }
+    } catch (error) {
+        console.error('Error fetching professor:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 app.get('/check-login', (req, res) => {
     try {
         const user = req.session.user;
