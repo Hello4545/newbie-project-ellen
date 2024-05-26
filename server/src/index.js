@@ -87,6 +87,7 @@ app.use('/add-lab', addLabRouter);
 app.post('/get-prof-id', async (req, res) => {
     const { userID } = req.body;
     console.log("get-prof-id", userID);
+    
     try {
         const professor = await prisma.professor.findFirst({
             where: {
