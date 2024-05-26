@@ -77,3 +77,30 @@ h1, div, nav, label, input{
   filter: brightness(0.8);
   max-height: 40vh;
 }
+
+.add-lab-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.add-lab-button {
+  background-color: rgb(225, 238, 251); /* Green */
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  color: rgb(46, 149, 246);
+  padding: 15px 30px;
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  width: 95%;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-bottom: 50px;
+}
+
+.add-lab-button:hover {
+  background-color: rgb(151, 199, 245);
+}

@@ -7,6 +7,7 @@ import LabViewPage from './pages/LabView';
 import ApplyPage from './pages/Apply';
 import ApplyListPage from './pages/ApplyList';
 import MyApplyListPage from './pages/MyApplyList';
+import AddLabPage from './pages/AddLab';
 
 import './App.css';
 
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/Apply" element={<ApplyPage />} />
           <Route path="/ApplyList" element={<ApplyListPage />} />
           <Route path="/MyApplyList" element={<MyApplyListPage />} />
+          <Route path="/AddLab" element={<AddLabPage />} />
         </Routes>
       </BrowserRouter>
     </div>

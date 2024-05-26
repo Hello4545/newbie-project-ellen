@@ -1,35 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./css/Home.css";
 import Nav from "./Nav";
 import LabsGrid from '../components/LabsGrid.js';
-import bannerImage from '../images/background.jpeg'
-
-const HomePage = () => {
-  return (
-    <>
-      <Nav />
-      <div className="home">
-        <div
-          className="home-banner"
-        >
-          <img src={bannerImage} className="background-image"/>
-        </div>
-        <div className="App">
-          <LabsGrid />
-        </div>
-      </div>
-    </>
-    
-  );
-};
-
-export default HomePage;
-
-/*import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useNavigate }  from "react-router-dom";
-import "./css/Home.css";
-import LabsGrid from '../components/LabsGrid.js';
+import bannerImage from '../images/background.jpeg';
 
 axios.defaults.withCredentials = true;
 
@@ -53,32 +28,10 @@ const HomePage = (props: {}) => {
       } else {
         setIsLoggedIn(false);
       }
-      // console.log("Response : "+data.id);
-      // setIsLoggedIn(response.data.isProfessor);
     } catch (error) {
       console.error('Failed to fetch username:', error);
     }
   };
-
-  // useEffect(() => {
-  //   console.log("Current login status:", isLoggedIn);
-  //   const checkLoginStatus = async () => {
-  //     try {
-  //       const response = await axios.get("https://api.ellen.newbie.sparcsandbox.com/check-login", {withCredentials: true});
-  //       if (response.status === 200 && response.data.isLoggedIn) {
-  //         setIsLoggedIn(true);
-  //         console.log('logged in now');
-  //       } else {
-  //         setIsLoggedIn(false);
-  //         console.log('not logged in');
-  //       }
-  //     } catch (error) {
-  //       console.error("Failed to check login status:", error);
-  //       setIsLoggedIn(false);
-  //     }
-  //   };
-  //   checkLoginStatus();
-  // }, [isLoggedIn]);
 
   useEffect(() => {
     checkLogin();
@@ -89,37 +42,36 @@ const HomePage = (props: {}) => {
       const response = await axios.post("https://api.ellen.newbie.sparcsandbox.com/logout", {withCredentials: true});
       alert('Successfully logged out!');
       navigate("/");
-    window.location.reload();
+      window.location.reload();
     } catch (error) {
       console.error('Failed to logout:', error);
     }
   }
 
+  const handleAddLabClick = () => {
+    navigate("/AddLab");
+  };
+
   return (
-    <div>
-      <nav className="top-nav">
-        <div className="nav-title"><h1>Labs</h1></div>
-        <div className="nav-message">{isLoggedIn ? `Hello, ${name}!` : 'Please log in.'}</div>
-        <div className="nav-buttons">
-          {!isLoggedIn && (
-            <>
-              <button onClick={() => navigate("/login")}>Login</button>
-              <button onClick={() => navigate("/register")}>Sign Up</button>
-            </>
-          )}
-          {isLoggedIn && <button onClick={handleLogout}>Logout</button>}
-        </div>
-      </nav>
+    <>
+      <Nav />
       <div className="home">
         <div className="home-banner">
+          <img src={bannerImage} className="background-image" alt="Banner"/>
         </div>
         <div className="App">
-            <LabsGrid />
+          <LabsGrid />
         </div>
+        {isProfessor && (
+          <div className="add-lab-button-container">
+            <button className="add-lab-button" onClick={handleAddLabClick}>
+              + Add Lab
+            </button>
+          </div>
+        )}
       </div>
-    </div>
-  )
+    </>
+  );
 };
 
 export default HomePage;
-*/

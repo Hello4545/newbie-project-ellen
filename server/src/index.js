@@ -58,6 +58,7 @@ const labViewRouter = require('./routes/LabView.js');
 const applyRouter = require('./routes/Apply.js');
 const applyListRouter = require('./routes/ApplyList.js');
 const myApplyListRouter = require('./routes/MyApplyList.js');
+const addLabRouter = require('./routes/AddLab.js');
 // const deleteMyApplyListRouter = require('./routes/MyApplyList.js');
 
 app.use(cors(corsOptions));
@@ -81,6 +82,7 @@ app.use('/labview', labViewRouter);
 app.use('/apply', applyRouter);
 app.use('/applylist', applyListRouter);
 app.use('/myapplylist', myApplyListRouter);
+app.use('/add-lab', addLabRouter);
 
 app.post('/get-prof-id', async (req, res) => {
     const { userID } = req.body;
