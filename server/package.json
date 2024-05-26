@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon src",
     "build": "node src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "production": "npm run build && npm start"
   },
   "author": "ellen",
   "license": "ISC",
