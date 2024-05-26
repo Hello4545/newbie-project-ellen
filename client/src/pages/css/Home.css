@@ -59,3 +59,21 @@ h1, div, nav, label, input{
 .nav-clickable-text:hover {
   text-decoration: underline;
 }
+
+/* .home-banner {
+  width: 100%;
+  height: 20%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+
+.background-image {
+  width: 100%;
+  /* height: 240px; */
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  filter: brightness(0.8);
+  max-height: 40vh;
+}

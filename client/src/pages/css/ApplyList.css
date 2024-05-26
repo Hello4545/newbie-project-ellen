@@ -43,20 +43,34 @@
   }
   
   .lab-view-container {
-    margin: 20px auto;
-    padding: 20px;
-    width: 90%;
-    max-width: 1200px;
-    background-color: #f9f9f9;
-    border: 1px solid #dddddd;
+    /* margin: 20px 10px; */
+    /* padding: 20px; */
+    /* margin: 20px 10px; */
+    width: 100%;
+    background-color: #ffffff;
+    /* border: 1px solid #ffffff; */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     text-align: left;
   }
+
+  /* .lab-view-container1 {
+    display: flex;
+    margin: 20px 10px;
+    padding: 20px;
+    width: 97%;
+    text-align: center;
+    background-color: #b13b3b;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    
+  } */
 
   .lab-view-title {
     margin: 0px 10px;
     margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
     width: 90%;
     flex: 1;
     border-radius: 8px;

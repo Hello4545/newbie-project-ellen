@@ -89,16 +89,18 @@ const ApplyListPage = () => {
     return (
         <>
             <Nav />
-            <div className="lab-view-container">
-                <div className="lab-view-title">Applications</div>
-                <div className="lab-view-content">
-                    {apps.length > 0 ? (
-                        <ApplicationList applications={apps} />
-                    ) : (
-                        <div>No applications found.</div>
-                    )}
+            {/* <div className="lab-view-container1"> */}
+                <div className="lab-view-container">
+                    <div className="lab-view-title">Applications</div>
+                    <div className="lab-view-content">
+                        {apps.length > 0 ? (
+                            <ApplicationList applications={apps} />
+                        ) : (
+                            <div>No applications found.</div>
+                        )}
+                    </div>
                 </div>
-            </div>
+            {/* </div> */}
         </>
     );
 };

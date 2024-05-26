@@ -2,18 +2,22 @@ import React from "react";
 import "./css/Home.css";
 import Nav from "./Nav";
 import LabsGrid from '../components/LabsGrid.js';
+import bannerImage from '../images/background.jpeg'
 
 const HomePage = () => {
   return (
     <>
       <Nav />
       <div className="home">
-          <div className="home-banner">
-          </div>
-          <div className="App">
-              <LabsGrid />
-          </div>
+        <div
+          className="home-banner"
+        >
+          <img src={bannerImage} className="background-image"/>
         </div>
+        <div className="App">
+          <LabsGrid />
+        </div>
+      </div>
     </>
     
   );
