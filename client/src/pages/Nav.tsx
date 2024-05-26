@@ -76,6 +76,10 @@ const Nav = (props: {}) => {
     console.log("userID"+user_id);
     navigate("/ApplyList", { state: { user_id :`${user_id}` }});
 };
+const handleMyApplyList = (user_id: number) => {
+  console.log("userID"+user_id);
+  navigate("/MyApplyList", { state: { user_id :`${user_id}` }});
+};
 
   return (
     <div>
@@ -86,6 +90,9 @@ const Nav = (props: {}) => {
             {isLoggedIn && isProfessor && <div className="nav-clickable-text" onClick={() => {
                         handleApplyList(userID)
                     }}>View Applications</div>}
+            {isLoggedIn && !isProfessor && <div className="nav-clickable-text" onClick={() => {
+                        handleMyApplyList(userID)
+                    }}>View My Applications</div>}
             {!isLoggedIn && (
                 <>
                 <button onClick={() => navigate("/login")}>Login</button>

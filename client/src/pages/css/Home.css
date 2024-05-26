@@ -29,7 +29,7 @@ h1, div, nav, label, input{
   align-items: center;
   margin-left: 20px;
   justify-content: flex-start;
-  font-size: clamp(10px, 3vw, 14px);
+  font-size: clamp(8px, 2.6vw, 14px);
 }
 
 .top-nav .nav-buttons {

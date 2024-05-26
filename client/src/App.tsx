@@ -6,6 +6,7 @@ import LoginPage from './pages/Login';
 import LabViewPage from './pages/LabView';
 import ApplyPage from './pages/Apply';
 import ApplyListPage from './pages/ApplyList';
+import MyApplyListPage from './pages/MyApplyList';
 
 import './App.css';
 
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/LabView" element={<LabViewPage />} />
           <Route path="/Apply" element={<ApplyPage />} />
           <Route path="/ApplyList" element={<ApplyListPage />} />
+          <Route path="/MyApplyList" element={<MyApplyListPage />} />
         </Routes>
       </BrowserRouter>
     </div>
