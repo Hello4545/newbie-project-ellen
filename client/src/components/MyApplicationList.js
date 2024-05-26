@@ -1,7 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./ApplicationList.css";
 
-const MyApplicationList = ({ applications }) => {
+const MyApplicationList = ({ initialApplications }) => {
+
+    const [applications, setApplications] = useState(initialApplications);
+
+    console.log("myapps:", applications)
+
+    const fetchApplications = async () => {
+        try {
+            const response = await axios.post('https://api.ellen.newbie.sparcsandbox.com/myapplylist');
+            setApplications(response.data);
+        } catch (error) {
+            console.error('Error fetching applications:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchApplications();
+    }, []);
+
+    const handleDelete = async (apply_id) => {
+        try {
+            const response = await axios.post('https://api.ellen.newbie.sparcsandbox.com/myapplylist/delete', {
+                apply_id
+            });
+            if (response.status === 200) {
+                fetchApplications();
+            } else {
+                console.error('Failed to delete the application');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    console.log(applications);
     return (
         <div className="application-list">
             {applications.map((application, index) => (
@@ -18,6 +53,7 @@ const MyApplicationList = ({ applications }) => {
                             <div className="application-view-label">Research Interest</div>
                             <div className="application-view-value">{application.interest}</div>
                         </div>
+                        <button className="delete-button" onClick={() => handleDelete(application.apply_id)}>Delete</button>
                     </div>
                 ))}
         </div>

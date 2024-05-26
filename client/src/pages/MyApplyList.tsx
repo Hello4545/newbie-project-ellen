@@ -63,16 +63,17 @@ const MyApplyListPage = () => {
             console.error('Failed to fetch applications:', error);
         }
     };
+    
 
     return (
         <>
             <Nav />
             {/* <div className="lab-view-container1"> */}
                 <div className="lab-view-container">
-                    <div className="lab-view-title">Applications</div>
+                    <div className="lab-view-title">Submitted Applications</div>
                     <div className="lab-view-content">
                         {apps.length > 0 ? (
-                            <MyApplicationList applications={apps} />
+                            <MyApplicationList initialApplications={apps} />
                         ) : (
                             <div>No applications found.</div>
                         )}

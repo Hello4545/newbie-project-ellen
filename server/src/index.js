@@ -58,6 +58,7 @@ const labViewRouter = require('./routes/LabView.js');
 const applyRouter = require('./routes/Apply.js');
 const applyListRouter = require('./routes/ApplyList.js');
 const myApplyListRouter = require('./routes/MyApplyList.js');
+// const deleteMyApplyListRouter = require('./routes/MyApplyList.js');
 
 app.use(cors(corsOptions));
 

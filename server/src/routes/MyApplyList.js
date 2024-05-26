@@ -29,4 +29,20 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.post('/delete', async (req, res) => {
+    const { apply_id } = req.body;
+    console.log(typeof(apply_id));
+    console.log("apply id : "+apply_id);
+    try {
+        const deletedApplication = await prisma.apply.delete({
+            where: { apply_id: apply_id }
+        });
+
+        res.status(200).json(deletedApplication);
+    } catch (error) {
+        console.error('Error deleting application:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 module.exports = router;
