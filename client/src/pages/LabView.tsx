@@ -14,6 +14,7 @@ const LabViewPage = (props: {}) => {
     const [website, setWebsite] = useState("");
     const [field, setField] = useState("");
     const [description, setDescrp] = useState("");
+    const [contacts, setContacts] = useState("");
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -61,6 +62,7 @@ const LabViewPage = (props: {}) => {
                 setWebsite(data.lab.website);
                 setField(data.lab.field);
                 setDescrp(data.lab.description)
+                setContacts(data.lab.contacts);
             }
             } catch (error) {
             console.error('Failed to get lab info:', error);
@@ -99,6 +101,7 @@ const LabViewPage = (props: {}) => {
                         <div className="lab-view-label">Location:</div>
                         <div className="lab-view-label">Website:</div>
                         <div className="lab-view-label">Field of Study:</div>
+                        <div className="lab-view-label">Email:</div>
                         <div className="lab-view-label">Description:</div>
                     </div>
                     <div className="lab-view-column-values">
@@ -106,6 +109,7 @@ const LabViewPage = (props: {}) => {
                         <div className="lab-view-location">{labLocation}</div>
                         <div className="lab-view-website"> <a className="lab-view-link" href={website} target="_blank" rel="noopener noreferrer">{website}</a></div>
                         <div className="lab-view-field">{field}</div>
+                        <div className="lab-view-website"><a className="lab-view-link" href={`https://mail.google.com/mail/?view=cm&fs=1&to=${contacts}`} target="_blank">{contacts}</a> </div>
                     </div>
                 </div>
                 <div className="lab-view-description">{description}</div>

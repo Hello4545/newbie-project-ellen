@@ -45,6 +45,7 @@ model Labs {
   field       String?
   prof_id     Int?
   description String?    @db.Text
+  contacts    String?    @db.VarChar(255)
   Apply       Apply[]
   Professor   Professor? @relation(fields: [prof_id], references: [prof_id], onDelete: NoAction, onUpdate: NoAction, map: "Labs_ibfk_1")
 
