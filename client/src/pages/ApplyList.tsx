@@ -42,6 +42,7 @@ const ApplyListPage = () => {
             console.error('Failed to fetch username:', error);
         }
     };
+    
     useEffect(() => {
         checkLogin();
     }, []);
