@@ -7,15 +7,27 @@ const ApplicationList = ({ applications }) => {
             {applications.map((application, index) => (
                     <div key={index} className="application-view-container">
                         <div className="application-row">
-                            <div className="application-view-label">Student Number</div>
+                            <div className="application-view-label">Applied Lab</div>
+                            <div className="application-view-value">{application.Labs.lab_name}</div>
+                        </div>
+                        <div className="application-row">
+                            <div className="application-view-label">Student Name</div>
+                            <div className="application-view-value">{application.User.name}</div>
+                        </div>
+                        <div className="application-row">
+                            <div className="application-view-label">Student ID</div>
                             <div className="application-view-value">{application.student_no}</div>
                         </div>
                         <div className="application-row">
-                            <div className="application-view-label">Year of Study</div>
-                            <div className="application-view-value">{application.years}</div>
+                            <div className="application-view-label">Department</div>
+                            <div className="application-view-value">{application.User.dept}</div>
                         </div>
                         <div className="application-row">
-                            <div className="application-view-label">Why?</div>
+                            <div className="application-view-label">Year of Study</div>
+                            <div className="application-view-value">{application.years} years</div>
+                        </div>
+                        <div className="application-row">
+                            <div className="application-view-label">Motivation</div>
                             <div className="application-view-value">{application.motivation}</div>
                         </div>
                         <div className="application-row">

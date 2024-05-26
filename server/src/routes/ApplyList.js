@@ -17,10 +17,12 @@ router.post('/', async (req, res) => {
             },
             include: {
                 Labs: true,
+                User: true,
             },
         });
 
         res.json(applications);
+        console.log(applications);
     } catch (error) {
         console.error('Error fetching applications:', error);
         res.status(500).json({ error: 'Internal server error' });

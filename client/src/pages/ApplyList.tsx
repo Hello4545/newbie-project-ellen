@@ -80,7 +80,7 @@ const ApplyListPage = () => {
             const { data } = await axios.post(`https://api.ellen.newbie.sparcsandbox.com/applylist`, { profID });
             console.log(typeof(profID));
             setApps(data);
-            console.log(data);
+            console.log("application forms!");
         } catch (error) {
             console.error('Failed to fetch applications:', error);
         }
