@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./ApplicationList.css";
 
-const MyApplicationList = ({ initialApplications }) => {
+const MyApplicationList = ({ initialApplications, user_id }) => {
 
     const [applications, setApplications] = useState(initialApplications);
 
@@ -10,8 +10,10 @@ const MyApplicationList = ({ initialApplications }) => {
 
     const fetchApplications = async () => {
         try {
-            const response = await axios.post('https://api.ellen.newbie.sparcsandbox.com/myapplylist');
+            const response = await axios.post('https://api.ellen.newbie.sparcsandbox.com/myapplylist', {user_id});
             setApplications(response.data);
+            console.log("response"+response.data);
+            console.log("myapps check:", applications);
         } catch (error) {
             console.error('Error fetching applications:', error);
         }
@@ -27,6 +29,7 @@ const MyApplicationList = ({ initialApplications }) => {
                 apply_id
             });
             if (response.status === 200) {
+                // console.log("response"+response);
                 fetchApplications();
             } else {
                 console.error('Failed to delete the application');

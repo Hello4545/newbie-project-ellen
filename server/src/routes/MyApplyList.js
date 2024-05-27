@@ -5,14 +5,14 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 router.post('/', async (req, res) => {
-    const { userID } = req.body;
-    console.log(typeof(userID));
-    console.log("approf"+userID);
+    const { user_id } = req.body;
+    console.log(typeof(user_id));
+    console.log("approf"+user_id);
     try {
         const applications = await prisma.apply.findMany({
             where: {
                 User: {
-                    id: userID,
+                    id: user_id,
                 }
             },
             include: {

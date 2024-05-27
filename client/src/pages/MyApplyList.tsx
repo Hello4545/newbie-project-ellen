@@ -58,7 +58,7 @@ const MyApplyListPage = () => {
             console.log(typeof(userID));
             const { data } = await axios.post(`https://api.ellen.newbie.sparcsandbox.com/myapplylist`, { userID });
             setApps(data);
-            console.log("application forms!");
+            console.log("application forms!", data);
         } catch (error) {
             console.error('Failed to fetch applications:', error);
         }
@@ -73,7 +73,7 @@ const MyApplyListPage = () => {
                     <div className="lab-view-title">Submitted Applications</div>
                     <div className="lab-view-content">
                         {apps.length > 0 ? (
-                            <MyApplicationList initialApplications={apps} />
+                            <MyApplicationList initialApplications={apps} user_id={userID}/>
                         ) : (
                             <div>No applications found.</div>
                         )}
